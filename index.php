@@ -8,61 +8,61 @@ vengono istanziati almeno due oggetti ‘Movie’ e stampati a schermo i valori 
 
 
 <?php
-
-# definisco la classe: 
-class Movie 
-{
-    public $title;
-    public $year;
-    public $genre;
-    public $language;
-    
-
-
-    function __construct($_title, $_year, $_genre, $_language)
-    {
-        $this->title = $_title;
-        $this->year = $_year;
-        $this->genre = $_genre;
-        $this->language = $_language;
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-   public function getYear()
-    {
-        return $this->year;
-    }
-
-    public function getGenre(){
-        return $this->genre;
-    }
-
-    public function getLanguage()
-    {
-        return $this->language;
-    }
-}
-
-
-$movie1 = new Movie("Matrix", "1999", "action", "English" );
-
-$movie2 = new Movie("Narnia", "2005", "fantasy", "English");
-
-$movie3 = new Movie("Star Wars", "1977", "space opera", "English");
-
-
-
-
-var_dump($movie1);
-var_dump($movie2);
-var_dump($movie3);
-
+include __DIR__ . '/Models/classMovie.php';
+include __DIR__ . '/db.php';
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        body{
+            background-color: palevioletred;
+        }
+    </style>
+    <title>Movies</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="container m-auto">
+            <div class="row mt-5">
+
+                <?php foreach ($movies as $movie) : ?>
+
+                    <div class="col-4">
+                        <div class="card p-3 d-flex">
+                            <h2>Titolo: <?= $movie->getTitle() ?></h2>
+                            <p>Anno: <span><?= $movie->getYear() ?></span></p>
+                            
+                            <p>Genere: <span><?= $movie->getGenre() ?></span></p>
+                            
+                        
+                            <p>Lingua Originale: <span><?= $movie->getLanguage() ?></span> </p>
+                            
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
 
 
 
