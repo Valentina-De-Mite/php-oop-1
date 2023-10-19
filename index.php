@@ -42,7 +42,6 @@ include __DIR__ . '/db.php';
                             <p>Anno: <span><?= $movie->getYear() ?></span></p>
                             
                             <p>Genere: <span><?= $movie->getGenre() ?></span></p>
-                            
                         
                             <p>Lingua Originale: <span><?= $movie->getLanguage() ?></span> </p>
                             
